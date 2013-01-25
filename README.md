@@ -1,6 +1,8 @@
 ASDF Markdown Editor
 ====================
 
+![asdf](file:///home/thy23/asdf/src/icons/logo.png)
+
 ## Introduction
 
 ASDF is a cross-platform WYSIWYG markdown editor written in Python. 
@@ -36,9 +38,10 @@ ASDF is a cross-platform WYSIWYG markdown editor written in Python.
 
 ## TODO
 
-1. Improve syntax highlighting
-2. Binary packages for Windows and Mac
-3. Sound effects  
+1. Relative image path for previewing
+2. Improve syntax highlighting
+3. Binary packages for Windows and Mac
+4. Sound effects  
 
 ## About asdf
 
@@ -46,4 +49,5 @@ asdf is written by Tsz-Ho Yu @ 2013.
 asdf is released under the GPL 3 license.
 
 email: <thyu413@gmail.com>
+
 url: <http://www.thyu.org>
