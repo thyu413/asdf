@@ -1,0 +1,49 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+<qresource>
+	<file>icons/icon_asdf.png</file>
+	<file>icons/icon_blist.png</file>
+	<file>icons/icon_bold.png</file>
+	<file>icons/icon_copy.png</file>
+	<file>icons/icon_css.png</file>
+	<file>icons/icon_cut.png</file>
+	<file>icons/icon_delete.png</file>
+	<file>icons/icon_edit.png</file>
+	<file>icons/icon_file.png</file>
+	<file>icons/icon_find.png</file>
+	<file>icons/icon_font.png</file>
+	<file>icons/icon_fonth1.png</file>
+	<file>icons/icon_fonth2.png</file>
+	<file>icons/icon_fonth3.png</file>
+	<file>icons/icon_fonth4.png</file>
+	<file>icons/icon_fonth5.png</file>
+	<file>icons/icon_fonth6.png</file>
+	<file>icons/icon_format.png</file>
+	<file>icons/icon_fullscreen.png</file>
+	<file>icons/icon_help.png</file>
+	<file>icons/icon_highlight.png</file>
+	<file>icons/icon_horizontal.png</file>
+	<file>icons/icon_html.png</file>
+	<file>icons/icon_image.png</file>
+	<file>icons/icon_italic.png</file>
+	<file>icons/icon_link.png</file>
+	<file>icons/icon_mail.png</file>
+	<file>icons/icon_new.png</file>
+	<file>icons/icon_nlist.png</file>
+	<file>icons/icon_open.png</file>
+	<file>icons/icon_paste.png</file>
+	<file>icons/icon_pdf.png</file>
+	<file>icons/icon_redo.png</file>
+	<file>icons/icon_save.png</file>
+	<file>icons/icon_saveas.png</file>
+	<file>icons/icon_settings.png</file>
+	<file>icons/icon_showmenu.png</file>
+	<file>icons/icon_tex.png</file>
+	<file>icons/icon_text.png</file>
+	<file>icons/icon_undo.png</file>
+	<file>icons/icon_vertical.png</file>
+	<file>icons/icon_win.png</file>
+	<file>icons/logo.png</file>
+</qresource>
+</RCC>
+
