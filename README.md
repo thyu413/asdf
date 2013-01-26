@@ -1,7 +1,7 @@
 ASDF Markdown Editor
 ====================
 
-![asdf](file:///home/thy23/asdf/src/icons/logo.png)
+![asdf](icons/logo.png)
 
 ## Introduction
 

@@ -72,6 +72,9 @@ class ASDF(QMainWindow):
 		# exepath
 		self.exePath = self.modulePath()
 
+		# page base path
+		self.basePath = os.getcwd()
+		
 		# HTML templates
 		self.strHtmlTemplate = "<!DOCTYPE HTML><html><head><style>{1}</style></head><title></title><body>{0}</body></html>"
 
@@ -404,7 +407,7 @@ class ASDF(QMainWindow):
 	def refreshView(self):
 		if (self.markupEnabled): # Markdown mode
 			strMarkdown = markdown.markdown(self.editor.toPlainText())
-			self.viewer.setHtml(self.strHtmlTemplate.format(strMarkdown, self.viewerStyle))
+			self.viewer.setHtml(self.strHtmlTemplate.format(strMarkdown, self.viewerStyle), QUrl.fromLocalFile(self.basePath + "/"))
 			# print(self.strHtmlTemplate.format(strMarkdown, self.viewerStyle))
 		else: # Plaintext mode
 			strMarkdown = markdown.markdown(self.editor.toPlainText())
@@ -417,7 +420,7 @@ class ASDF(QMainWindow):
 			]
 			for i,j in dic:
 				strMarkdown = strMarkdown.replace(i,j)
-			self.viewer.setHtml(strMarkdown)
+			self.viewer.setHtml(strMarkdown, QUrl.fromLocalFile(self.basePath))
 
 	def hideToolbar(self):
 		if (self.hideMode):
@@ -460,9 +463,8 @@ class ASDF(QMainWindow):
 		filePath = QFileDialog.getOpenFileName(self, "Open", ".", "CSS file (*.css)");
 		if (filePath == "" or filePath == None):
 			return
-		self.currentFilePath = filePath
 		# read input file 		
-		f = codecs.open(self.currentFilePath, encoding="utf-8", mode="r")
+		f = codecs.open(filePath, encoding="utf-8", mode="r")
 		strStyleInput = f.read()	
 		f.close()
 		# write it to style 
@@ -474,6 +476,7 @@ class ASDF(QMainWindow):
 	def newFile(self):
 		if (self.confirmSave()):
 			self.currentFilePath = "Untitled.md"
+			self.basePath = os.getcwd()
 			self.editor.setPlainText("")
 			self.setWindowTitle(os.path.basename(self.currentFilePath) + " - asdf")
 		else:
@@ -485,6 +488,7 @@ class ASDF(QMainWindow):
 			if (filePath == "" or filePath == None):
 				return
 			self.currentFilePath = filePath
+			self.basePath = os.path.dirname(os.path.realpath(filePath))
 		data = self.editor.toPlainText()
 		f = codecs.open(self.currentFilePath, encoding="utf-8", mode="w")
 		f.write(data)
@@ -496,6 +500,7 @@ class ASDF(QMainWindow):
 		if (filePath == "" or filePath == None):
 			return
 		self.currentFilePath = filePath
+		self.basePath = os.path.dirname(os.path.realpath(filePath))
 		data = self.editor.toPlainText()
 		f = codecs.open(self.currentFilePath, encoding="utf-8", mode="w")
 		f.write(data)
@@ -509,6 +514,7 @@ class ASDF(QMainWindow):
 			if (filePath == "" or filePath == None):
 				return
 			self.currentFilePath = filePath
+			self.basePath = os.path.dirname(os.path.realpath(filePath))
 			f = codecs.open(self.currentFilePath, encoding="utf-8", mode="r")
 			self.editor.setPlainText(f.read())	
 			f.close()
@@ -646,7 +652,7 @@ class ASDF(QMainWindow):
 		tempEdit = QTextEdit()
 		tempEdit.zoomIn(5)
 		self.refreshView()
-		tempEdit.setHtml(self.viewer.page().currentFrame().toHtml())
+		tempEdit.setHtml(self.viewer.page().currentFrame().toHtml(), QUrl.fromLocalFile(self.basePath))
 		self.pdfPrinter.setOutputFileName(filePath)
 		tempEdit.print_(self.pdfPrinter)
 
@@ -660,6 +666,7 @@ class ASDF(QMainWindow):
 		if (fext in openable):
 			if (self.confirmSave()):
 				self.currentFilePath = path
+				self.basePath = os.path.dirname(os.path.realpath(self.currentFilePath))
 				f = codecs.open(self.currentFilePath, encoding="utf-8", mode="r")
 				self.editor.setPlainText(f.read())	
 				f.close()
